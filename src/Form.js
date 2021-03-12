@@ -1,4 +1,3 @@
-//import './Javascript';
 
 function Form() {
   return (
@@ -22,7 +21,7 @@ function Form() {
         <div className="date-group">
           <h4>Birth Date</h4>
           <div className="select">
-            <select /* onChange={selectMonth(this)} */ name="option" id="month"></select><br />
+            <select /* onChange={selectMonth()} */ name="option" id="month"></select><br />
             <label htmlFor="month">Month</label>
           </div>
           <div className="select">
@@ -30,7 +29,7 @@ function Form() {
             <label htmlFor="day">Day</label>
           </div>
           <div className="select">
-            <select /* onChange={selectYear(this)}  */ name="option" id="year"></select><br />
+            <select /* onChange={selectYear(this)} */ name="option" id="year"></select><br />
             <label htmlFor="year">Year</label>
           </div>
         </div>
