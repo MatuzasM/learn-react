@@ -1,6 +1,5 @@
 // validation 
 const inputs = document.querySelectorAll("#email, #number")
-
 const patterns = {
   number: /^\+?(370)[ ]?(\d{3})[ ]?(\d{5})$/g,
   //  + or nothing, international code 370, gap or not, 3 numbers, gap or not, 5 numbers

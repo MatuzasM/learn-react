@@ -53,7 +53,6 @@ function selectState() {
   const options = createOption(form.city);
   document.getElementById('city').innerHTML = options;
 }
-
 function selectCity() {
   let selectedCityValue = document.getElementById("city").value.replace(/[-]/g, ' ');
   upperCaseCity = selectedCityValue.charAt(0).toUpperCase() + selectedCityValue.slice(1);
