@@ -4,6 +4,6 @@
 @tailwind utilities;
 @tailwind forms;
 
-
+@import './styles/custom.css';
 
 
