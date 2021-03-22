@@ -1,9 +1,17 @@
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 export default function App() {
   const { register, handleSubmit, errors } = useForm();
+  // display form object
   const onSubmit = data => console.log(data);
-  console.log(errors);
+
+  // display select items
+  const getSelectedValue = e => console.log(e.target.value);
+
+  const [course, setCourse] = useState('');
+  console.log(course);
+
 
   return (
     <form className="text-sm" onSubmit={handleSubmit(onSubmit)}>
@@ -43,6 +51,7 @@ export default function App() {
           <div className="flex space-x-1">
             <div className="w-3/5">
               <select
+                onChange={getSelectedValue}
                 name="month"
                 className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
                 ref={register}
@@ -56,6 +65,7 @@ export default function App() {
             </div>
             <div className="w-2/5">
               <select
+                onChange={getSelectedValue}
                 name="day"
                 className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
                 ref={register}
@@ -69,6 +79,7 @@ export default function App() {
             </div>
             <div className="w-2/5">
               <select
+                onChange={getSelectedValue}
                 name="year"
                 className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
                 ref={register}
@@ -151,24 +162,24 @@ export default function App() {
       </div>
       <div className="flex space-x-3 mb-4">
         <div className="w-1/2">
-          <label className="text-base text-gray-600 font-semibold" htmlFor="email">Student E-mail</label>
+          <label className="text-base text-gray-600 font-semibold" htmlFor="email">Student E-mail*</label>
           <input
             type="email"
             id="email"
             name="email"
             className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-            ref={register}
+            ref={register({ required: true, pattern: /^([a-z\d\.-]+)@([a-z\d\-]+)\.([a-z]{2,8})$/i })}
           />
           <p> example@example.com</p>
         </div>
         <div className="w-1/2">
-          <label className="text-base text-gray-600 font-semibold" htmlFor="mobile">Mobile Number</label>
+          <label className="text-base text-gray-600 font-semibold" htmlFor="mobile">Mobile Number*</label>
           <input
             type="text"
             id="number"
             name="mobileNumber"
             className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-            ref={register}
+            ref={register({ required: true, pattern: /^\+?(370)[ ]?(\d{3})[ ]?(\d{5})$/i })}
           />
           <p>+370 600 00000</p>
         </div>
@@ -209,14 +220,16 @@ export default function App() {
       <div className="mb-4">
         <label className="text-base text-gray-600 font-semibold" htmlFor="courses">Courses</label>
         <select
+          onChange={e => setCourse(e.target.value)}
           name="courses"
+          id="courses"
           className="border-gray-400 block py-1 px-3 w-1/2 rounded focus:border-indigo-500 focus:ring-indigo-500"
           ref={register}
         >
-          <option value="">Php</option>
-          <option value="">React</option>
-          <option value="">Nestjs</option>
-          <option value="">Tailwindcss</option>
+          <option value="php">Php</option>
+          <option value="reactjs">React</option>
+          <option value="nestjs">Nestjs</option>
+          <option value="tailwindscss">Tailwindcss</option>
         </select>
       </div>
       <div className="">
