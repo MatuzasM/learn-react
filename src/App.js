@@ -1,5 +1,4 @@
 import Form from './domains/Form';
-import Select from './components/Select';
 
 function App() {
   return (
@@ -7,9 +6,6 @@ function App() {
       <div className="bg-white py-8 px-6 shadow rounded sm:px-10 shadow-xl">
         <Form />
       </div><br />
-      <div className="bg-white py-8 px-6 shadow rounded sm:px-10 shadow-xl">
-        <Select />
-      </div>
     </div>
   );
 }

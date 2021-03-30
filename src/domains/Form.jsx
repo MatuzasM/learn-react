@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import ButtonElement from '../components/ButtonElement';
+import InputElement from '../components/InputElement';
+import SelectElement from '../components/SelectElement';
+import TextareaElement from '../components/TextareaElement';
 
 export default function App() {
   const { register, handleSubmit, errors } = useForm();
@@ -12,36 +16,26 @@ export default function App() {
   const [course, setCourse] = useState('');
   console.log(course);
 
-
   return (
     <form className="text-sm" onSubmit={handleSubmit(onSubmit)}>
       <h1 className="text-base text-gray-600 font-semibold">Student Name</h1>
       <div className="flex space-x-1 mb-4">
         <div className="w-1/3">
-          <input
-            type="text"
-            name="firstName"
-            className="valid border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-indigo-500"
-            ref={register}
-          />
+          <InputElement
+            className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-indigo-500"
+            name="firstName" />
           <label htmlFor="firstName">First Name</label>
         </div>
         <div className="w-1/3">
-          <input
-            type="text"
-            name="middleName"
+          <InputElement
             className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-indigo-500"
-            ref={register}
-          />
+            name="middleName" />
           <label htmlFor="middleName">Middle Name</label>
         </div>
         <div className="w-1/3">
-          <input
-            type="text"
-            name="lastName"
+          <InputElement
             className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-indigo-500"
-            ref={register}
-          />
+            name="lastName" />
           <label htmlFor="lastName">Last Name</label>
         </div>
       </div>
@@ -50,202 +44,131 @@ export default function App() {
           <h1 className="text-base text-gray-600 font-semibold">Birth Day</h1>
           <div className="flex space-x-1">
             <div className="w-3/5">
-              <select
-                onChange={getSelectedValue}
-                name="month"
+              <SelectElement
                 className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-                ref={register}
-              >
-                <option className="january" value="January">January</option>
-                <option value="february">February</option>
-                <option value="march">March</option>
-                <option value="april">April</option>
-              </select>
+                name="month" />
               <label htmlFor="month">Month</label>
             </div>
             <div className="w-2/5">
-              <select
-                onChange={getSelectedValue}
-                name="day"
+              <SelectElement
                 className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-                ref={register}
-              >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="2">3</option>
-                <option value="31">31</option>
-              </select>
+                name="day" />
               <label htmlFor="day">Day</label>
             </div>
             <div className="w-2/5">
-              <select
-                onChange={getSelectedValue}
-                name="year"
+              <SelectElement
                 className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-                ref={register}
-              >
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-              </select>
+                name="year" />
               <label htmlFor="year">Year</label>
             </div>
           </div>
         </div>
         <div className="w-1/2">
           <h1 className="text-base font-semibold">Gender</h1>
-          <select
-            name="gender"
+          <SelectElement
             className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-            ref={register}
-          >
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
+            name="gender" />
         </div>
       </div>
       <div className="mb-4">
         <h1 className="text-base text-gray-600 font-semibold">Address</h1>
-        <input
-          type="text"
-          name="addressLine"
+        <InputElement
           className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-          ref={register}
-        />
+          name="addressLine" />
         <label htmlFor="streetAddress">Street Address</label>
       </div>
       <div className="mb-4">
-        <input
-          type="text"
-          name="addressLineTwo"
+        <InputElement
           className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-          ref={register}
-        />
+          name="addressLineTwo" />
         <label htmlFor="streetAddressLine">Street address line 2</label>
       </div>
       <div className="flex space-x-3 mb-4">
         <div className="w-1/2">
-          <select
-            name="city"
+          <SelectElement
             className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-            ref={register}
-          >
-            <option value="City1">City1</option>
-            <option value="City2">City2</option>
-            <option value="City3">City3</option>
-            <option value="City3">City4</option>
-          </select>
+            name="city" />
           <label htmlFor="city">City</label>
         </div>
         <div className="w-1/2">
-          <select
-            name="state"
+          <SelectElement
             className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-            ref={register}
-          >
-            <option value="Texas">Texas</option>
-            <option value="California">California</option>
-            <option value="Nevada">Nevada</option>
-          </select>
+            name="state" />
           <label htmlFor="state">State / Province</label>
         </div>
       </div>
       <div className="mb-4">
-        <input
-          type="text"
-          name="zipCode"
+        <InputElement
           className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-          ref={register}
-        />
+          name="zipCode" />
         <label htmlFor="zipCode">Postal / Zip Code</label>
       </div>
       <div className="flex space-x-3 mb-4">
         <div className="w-1/2">
           <label className="text-base text-gray-600 font-semibold" htmlFor="email">Student E-mail*</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
+          <InputElement
             className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-            ref={register({ required: true, pattern: /^([a-z\d\.-]+)@([a-z\d\-]+)\.([a-z]{2,8})$/i })}
-          />
+            name="email"
+            id="email" />
           <p> example@example.com</p>
         </div>
         <div className="w-1/2">
           <label className="text-base text-gray-600 font-semibold" htmlFor="mobile">Mobile Number*</label>
-          <input
-            type="text"
-            id="number"
-            name="mobileNumber"
+          <InputElement
             className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-            ref={register({ required: true, pattern: /^\+?(370)[ ]?(\d{3})[ ]?(\d{5})$/i })}
-          />
+            name="mobileNumber"
+            id="mobileNumber" />
           <p>+370 600 00000</p>
         </div>
       </div>
       <div className="flex space-x-3 mb-4">
         <div className="w-1/2">
           <label className="text-base text-gray-600 text-base font-semibold" htmlFor="phone">Phone Number</label>
-          <input
-            type="text"
-            id="number"
-            name="phoneNumber"
+          <InputElement
             className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-            ref={register}
-          />
+            name="phoneNumber"
+            id="phoneNumber" />
           <p>+37060000000</p>
         </div>
         <div className="w-1/2">
           <label className="text-base text-gray-600 font-semibold" htmlFor="work">Work Number</label>
-          <input
-            type="text"
-            id="number"
-            name="workNumber"
+          <InputElement
             className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-            ref={register}
-          />
+            name="workNumber"
+            id="workNumber" />
           <p>37060000000</p>
         </div>
       </div>
       <div className="mb-4">
         <label className="text-base text-gray-600 font-semibold" htmlFor="company">Company</label>
-        <input
-          type="text"
-          name="company"
-          className="border-gray-400 block py-1 px-3 w-1/2 rounded focus:border-indigo-500 focus:ring-indigo-500"
-          ref={register}
-        />
+        <InputElement
+          className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
+          name="company" />
       </div>
       <div className="mb-4">
         <label className="text-base text-gray-600 font-semibold" htmlFor="courses">Courses</label>
-        <select
-          onChange={e => setCourse(e.target.value)}
-          name="courses"
-          id="courses"
+        <SelectElement
           className="border-gray-400 block py-1 px-3 w-1/2 rounded focus:border-indigo-500 focus:ring-indigo-500"
-          ref={register}
-        >
-          <option value="php">Php</option>
-          <option value="reactjs">React</option>
-          <option value="nestjs">Nestjs</option>
-          <option value="tailwindscss">Tailwindcss</option>
-        </select>
+          name="courses" />
       </div>
       <div className="">
         <label className="text-base text-gray-600 font-semibold" htmlFor="comments">Additional Comments</label>
-        <textarea
-          rows="6"
-          name="comment"
+        <TextareaElement
           className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-          ref={register}
-        />
+          rows="6"
+          name="comment" />
       </div>
       <hr className="mt-3 border-gray-200" />
       <div className="mt-8">
-        <button type="submit" className="bg-yellow-400 hover:bg-yellow-300 text-yellow-900 text-yellow-800 focus:outline-none py-2 px-4">Submit Application</button>
-        <button type="reset" className="bg-yellow-400 hover:bg-yellow-300 text-yellow-900 text-yellow-800 focus:outline-none py-2 px-4 float-right">Clear Fields</button>
-      </div>
+        <ButtonElement
+          type="submit"
+          className="bg-yellow-400 hover:bg-yellow-300 text-yellow-900 text-yellow-800 focus:outline-none py-2 px-4"
+          label="Submit Application" />
+        <ButtonElement
+          type="reset"
+          className="bg-yellow-400 hover:bg-yellow-300 text-yellow-900 text-yellow-800 focus:outline-none py-2 px-4 float-right"
+          label="Clear Fields" />
+      </div >
     </form >
   );
 }
