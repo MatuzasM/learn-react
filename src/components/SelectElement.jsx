@@ -1,10 +1,12 @@
+import { useFormContext } from "react-hook-form";
 
-export default function SelectElement(props) {
+function SelectElement(props) {
+  const { register } = useFormContext(); // retrieve all hook methods
   const option = [
-    { value: '0', label: 'January' },
-    { value: '1', label: 'February' },
-    { value: '2', label: 'April' },
-    { value: '3', label: 'March' }
+    { value: 'pirmas', label: 'pirmas' },
+    { value: 'antras', label: 'antras' },
+    { value: 'trecias', label: 'trecias' },
+    { value: 'ketvirtas', label: 'ketvirtas' }
   ];
 
   let options = option.map(option => (
@@ -13,8 +15,7 @@ export default function SelectElement(props) {
 
   return (
     <select
-      // onChange={getSelectedValue}      
-      // ref={register}
+      ref={register}
       name={props.name}
       className={props.className}
     >
@@ -23,3 +24,5 @@ export default function SelectElement(props) {
     </select>
   );
 }
+
+export default SelectElement;

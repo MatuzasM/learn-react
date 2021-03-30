@@ -1,11 +1,18 @@
+import { useFormContext } from "react-hook-form";
 
-export default function ButtonElement(props) {
-
+function ButtonElement(props) {
+  const { register } = useFormContext(); // retrieve all hook methods
   return (
     <button
+      ref={register}
       type={props.type}
-      className={props.className}>
+      name={props.name}
+      className={props.className}
+    >
       {props.label}
     </button>
   );
 }
+
+
+export default ButtonElement;
