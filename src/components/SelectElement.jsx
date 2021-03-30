@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 
-function SelectElement(props) {
+export default function SelectElement(props) {
   const { register } = useFormContext(); // retrieve all hook methods
   const option = [
     { value: 'pirmas', label: 'pirmas' },
@@ -24,5 +24,3 @@ function SelectElement(props) {
     </select>
   );
 }
-
-export default SelectElement;

@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 
-function InputElement(props) {
+export default function InputElement(props) {
 
   const { register } = useFormContext(); // retrieve all hook methods
 
@@ -14,5 +14,3 @@ function InputElement(props) {
     />
   );
 }
-
-export default InputElement;

@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 
-function TextareaElement(props) {
+export default function TextareaElement(props) {
   const { register } = useFormContext(); // retrieve all hook methods
   return (
     <textarea
@@ -12,4 +12,3 @@ function TextareaElement(props) {
   );
 }
 
-export default TextareaElement;
