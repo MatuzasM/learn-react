@@ -18,26 +18,15 @@ export default function App() {
         <h1 className="text-base font-semibold">Student Name</h1>
         <div className="flex space-x-1 mb-4">
           <div className="w-1/3">
-            <input
-              className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-indigo-500"
-              ref={register}
-              name="firstName"
-              id="firstName"
-              type="text"
-            />
+            <InputElement className="w-full" name="firtName" />
             <label htmlFor="firstName">First Name</label>
           </div>
           <div className="w-1/3">
-            <InputElement
-              className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-indigo-500"
-              type="text"
-              name="middleName" />
+            <InputElement className="w-full" name="middleName" />
             <label htmlFor="middleName">Middle Name</label>
           </div>
           <div className="w-1/3">
-            <InputElement
-              className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-indigo-500"
-              name="lastName" />
+            <InputElement className="w-full" name="lastName" />
             <label htmlFor="lastName">Last Name</label>
           </div>
         </div>
@@ -46,133 +35,88 @@ export default function App() {
             <h1 className="text-base font-semibold">Birth Day</h1>
             <div className="flex space-x-1">
               <div className="w-3/5">
-                <SelectElement
-                  className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-                  name="month" />
+                <SelectElement className="w-full" name="month" />
                 <label htmlFor="month">Month</label>
               </div>
               <div className="w-2/5">
-                <SelectElement
-                  className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-                  name="day" />
+                <SelectElement className="w-full" name="day" />
                 <label htmlFor="day">Day</label>
               </div>
               <div className="w-2/5">
-                <SelectElement
-                  className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-                  name="year" />
+                <SelectElement className="w-full" name="year" />
                 <label htmlFor="year">Year</label>
               </div>
             </div>
           </div>
           <div className="w-1/2">
             <h1 className="text-base font-semibold">Gender</h1>
-            <SelectElement
-              className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-              name="gender" />
+            <SelectElement className="w-full" name="gender" />
           </div>
         </div>
         <div className="mb-4">
           <h1 className="text-base text-gray-600 font-semibold">Address</h1>
-          <InputElement
-            className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-            name="addressLine" />
+          <InputElement className="w-full" name="addressLine" />
           <label htmlFor="streetAddress">Street Address</label>
         </div>
         <div className="mb-4">
-          <InputElement
-            className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-            name="addressLineTwo" />
+          <InputElement className="w-full" name="addressLineTwo" />
           <label htmlFor="streetAddressLine">Street address line 2</label>
         </div>
         <div className="flex space-x-3 mb-4">
           <div className="w-1/2">
-            <SelectElement
-              className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-              name="city" />
+            <SelectElement className="w-full" name="city" />
             <label htmlFor="city">City</label>
           </div>
           <div className="w-1/2">
-            <SelectElement
-              className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-              name="state" />
+            <SelectElement className="w-full" name="state" />
             <label htmlFor="state">State / Province</label>
           </div>
         </div>
         <div className="mb-4">
-          <InputElement
-            className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-            name="zipCode" />
+          <InputElement className="w-full" name="zipCode" />
           <label htmlFor="zipCode">Postal / Zip Code</label>
         </div>
         <div className="flex space-x-3 mb-4">
           <div className="w-1/2">
             <label className="text-base font-semibold" htmlFor="email">Student E-mail*</label>
-            <InputElement
-              className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-              name="email"
-              id="email" />
+            <InputElement className="w-full" name="email" />
             <p> example@example.com</p>
           </div>
           <div className="w-1/2">
             <label className="text-base font-semibold" htmlFor="mobile">Mobile Number*</label>
-            <InputElement
-              className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-              name="mobileNumber"
-              id="mobileNumber" />
+            <InputElement className="w-full" name="mobileNumber" />
             <p>+370 600 00000</p>
           </div>
         </div>
         <div className="flex space-x-3 mb-4">
           <div className="w-1/2">
             <label className="text-base font-semibold" htmlFor="phone">Phone Number</label>
-            <InputElement
-              className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-              name="phoneNumber"
-              id="phoneNumber" />
+            <InputElement className="w-full" name="phoneNumber" />
             <p>+37060000000</p>
           </div>
           <div className="w-1/2">
             <label className="text-base font-semibold" htmlFor="work">Work Number</label>
-            <InputElement
-              className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-              name="workNumber"
-              id="workNumber" />
+            <InputElement className="w-full" name="workNumber" />
             <p>37060000000</p>
           </div>
         </div>
         <div className="mb-4">
           <label className="text-base text-gray-600 font-semibold" htmlFor="company">Company</label>
-          <InputElement
-            className="border-gray-400 block py-1 px-3 w-1/2 rounded focus:border-indigo-500 focus:ring-indigo-500"
-            name="company"
+          <InputElement className="w-1/2" name="company"
           />
         </div>
         <div className="mb-4">
           <label className="text-base text-gray-600 font-semibold" htmlFor="courses">Courses</label>
-          <SelectElement
-            className="border-gray-400 block py-1 px-3 w-1/2 rounded focus:border-indigo-500 focus:ring-indigo-500"
-            name="courses" />
+          <SelectElement className="w-1/2" name="courses" />
         </div>
         <div className="">
           <label className="text-base text-gray-600 font-semibold" htmlFor="comments">Additional Comments</label>
-          <TextareaElement
-            className="border-gray-400 block py-1 px-3 w-full rounded focus:border-indigo-500 focus:ring-indigo-500"
-            rows="6"
-            name="comment" />
+          <TextareaElement />
         </div>
         <hr className="mt-3 border-gray-200" />
         <div className="mt-8">
-          <ButtonElement
-            name="submit"
-            type="submit"
-            className="bg-yellow-400 hover:bg-yellow-300 text-yellow-900 text-yellow-800 focus:outline-none py-2 px-4"
-            label="Submit Application" />
-          <ButtonElement
-            name="reset"
-            type="reset"
-            className="bg-yellow-400 hover:bg-yellow-300 text-yellow-900 text-yellow-800 focus:outline-none py-2 px-4 float-right"
-            label="Clear Fields" />
+          <ButtonElement type="submit" label="Submit Application" />
+          <ButtonElement type="reset" label="Clear Fields" className="float-right" />
         </div >
       </form >
     </FormProvider>
