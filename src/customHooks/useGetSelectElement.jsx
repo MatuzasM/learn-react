@@ -15,5 +15,5 @@ export function useGetSelectElement() {
     <option key={option.value} value={option.value}>{option.label}</option>
   ));
 
-  return [register, options];
+  return [register, option];
 }

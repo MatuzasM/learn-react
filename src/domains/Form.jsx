@@ -35,22 +35,22 @@ export default function App() {
             <h1 className="text-base font-semibold">Birth Day</h1>
             <div className="flex space-x-1">
               <div className="w-3/5">
-                <SelectElement className="w-full" name="month" />
+                <SelectElement className="w-full" name="month" id="month" />
                 <label htmlFor="month">Month</label>
               </div>
               <div className="w-2/5">
-                <SelectElement className="w-full" name="day" />
+                <SelectElement className="w-full" name="day" id="day" />
                 <label htmlFor="day">Day</label>
               </div>
               <div className="w-2/5">
-                <SelectElement className="w-full" name="year" />
+                <SelectElement className="w-full" name="year" id="year" />
                 <label htmlFor="year">Year</label>
               </div>
             </div>
           </div>
           <div className="w-1/2">
             <h1 className="text-base font-semibold">Gender</h1>
-            <SelectElement className="w-full" name="gender" />
+            <SelectElement className="w-full" name="gender" id="gender" />
           </div>
         </div>
         <div className="mb-4">
@@ -64,11 +64,11 @@ export default function App() {
         </div>
         <div className="flex space-x-3 mb-4">
           <div className="w-1/2">
-            <SelectElement className="w-full" name="city" />
+            <SelectElement className="w-full" name="city" id="city" />
             <label htmlFor="city">City</label>
           </div>
           <div className="w-1/2">
-            <SelectElement className="w-full" name="state" />
+            <SelectElement className="w-full" name="state" id="state" />
             <label htmlFor="state">State / Province</label>
           </div>
         </div>
@@ -107,7 +107,7 @@ export default function App() {
         </div>
         <div className="mb-4">
           <label className="text-base text-gray-600 font-semibold" htmlFor="courses">Courses</label>
-          <SelectElement className="w-1/2" name="courses" />
+          <SelectElement className="w-1/2" name="courses" id="courses" />
         </div>
         <div className="">
           <label className="text-base text-gray-600 font-semibold" htmlFor="comments">Additional Comments</label>
