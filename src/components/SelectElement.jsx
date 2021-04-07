@@ -1,18 +1,18 @@
-import { useFormContext } from "react-hook-form";
+import { useGetSelectElement } from '../customHooks/useGetSelectElement';
 
 export default function SelectElement(props) {
-  const { register } = useFormContext(); // retrieve all hook methods
-  const option = [
-    { value: 'pirmas', label: 'pirmas' },
-    { value: 'antras', label: 'antras' },
-    { value: 'trecias', label: 'trecias' },
-    { value: 'ketvirtas', label: 'ketvirtas' }
-  ];
-
-  let options = option.map(option => (
-    <option key={option.value} value={option.value}>{option.label}</option>
-  ));
-
+  /*   const { register } = useFormContext(); // retrieve all hook methods
+    const option = [
+      { value: 'pirmas', label: 'pirmas' },
+      { value: 'antras', label: 'antras' },
+      { value: 'trecias', label: 'trecias' },
+      { value: 'ketvirtas', label: 'ketvirtas' }
+    ];
+  
+    let options = option.map(option => (
+      <option key={option.value} value={option.value}>{option.label}</option>
+    )); */
+  const [register, options] = useGetSelectElement();
   return (
     <select
       ref={register}
