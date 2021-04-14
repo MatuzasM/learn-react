@@ -3,14 +3,31 @@ import ButtonElement from '../components/ButtonElement';
 import InputElement from '../components/InputElement';
 import SelectElement from '../components/SelectElement';
 import TextareaElement from '../components/TextareaElement';
+import { generateArrayOfMonths, generateArrayOfDays, generateArrayOfYears } from "../api/fetchData.js";
+import { useState } from "react";
 
 export default function App() {
+  const [month, setMonth] = useState([]);
+  const [day, setDay] = useState([]);
+  const [year, setYears] = useState([]);
   const methods = useForm();
   const { register, handleSubmit, errors } = methods;
-  // display form object
-  const onSubmit = data => console.log(data);
 
-  // const getSelectedValue = e => console.log(e.target.value);
+  useEffect(() => {
+    const resultMonth = generateArrayOfMonths();
+    const resultDay = generateArrayOfDays();
+    const resultYears = generateArrayOfYears();
+    if (resultMonth?.length){
+      setMonth(resultMonth);
+    }
+    if (resultDay?.length){
+      setDay(resultDay);
+    }
+    if (resultYears?.length){
+      setYears(resultYears);
+    }
+  }, []);
+  const onSubmit = data => console.log(data);
 
   return (
     <FormProvider {...methods}>
@@ -35,11 +52,12 @@ export default function App() {
             <h1 className="text-base font-semibold">Birth Day</h1>
             <div className="flex space-x-1">
               <div className="w-3/5">
-                <SelectElement className="w-full" name="month" id="month" />
+              {console.log(month, "month")}
+                <SelectElement className="w-full" name="month" id="month" data={month} />
                 <label htmlFor="month">Month</label>
               </div>
               <div className="w-2/5">
-                <SelectElement className="w-full" name="day" id="day" />
+                <SelectElement className="w-full" name="day" id="day" data={day}/>
                 <label htmlFor="day">Day</label>
               </div>
               <div className="w-2/5">
