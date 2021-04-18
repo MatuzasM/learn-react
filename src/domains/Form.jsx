@@ -4,8 +4,8 @@ import ButtonElement from '../components/ButtonElement';
 import InputElement from '../components/InputElement';
 import SelectElement from '../components/SelectElement';
 import TextareaElement from '../components/TextareaElement';
-import { 
-  generateArrayOfMonths, generateArrayOfDays, generateArrayOfYears, generateArrayOfGenders, generateArrayOfCourses, } from '../api/generateData';
+import { generateArrayOfMonths, generateArrayOfDays, generateArrayOfYears, generateArrayOfGenders, generateArrayOfCourses, } from '../api/generateData';
+
 
 export default function App() {
   const [month, setMonth] = useState([]);
@@ -39,10 +39,7 @@ export default function App() {
     }
   }, [])
 
-  // display form object
   const onSubmit = data => console.log(data);
-
-  // const getSelectedValue = e => console.log(e.target.value);
 
   return (
     <FormProvider {...methods}>
@@ -71,7 +68,7 @@ export default function App() {
                 <label htmlFor="month">Month</label>
               </div>
               <div className="w-2/5">
-                <SelectElement className="w-full" name="day" id="day" data={day} />
+                <SelectElement className="w-full" name="day" id="day" data={day}/>
                 <label htmlFor="day">Day</label>
               </div>
               <div className="w-2/5">
