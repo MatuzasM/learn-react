@@ -1,12 +1,44 @@
 import { useForm, FormProvider } from "react-hook-form";
+import { useEffect, useState } from "react";
 import ButtonElement from '../components/ButtonElement';
 import InputElement from '../components/InputElement';
 import SelectElement from '../components/SelectElement';
 import TextareaElement from '../components/TextareaElement';
+import { 
+  generateArrayOfMonths, generateArrayOfDays, generateArrayOfYears, generateArrayOfGenders, generateArrayOfCourses, } from '../api/generateData';
 
 export default function App() {
+  const [month, setMonth] = useState([]);
+  const [day, setDay] = useState([]);
+  const [years, setYears] = useState([]);
+  const [gender, setGender] = useState([]);
+  const [courses, setCourses] = useState([]);
   const methods = useForm();
-  const { register, handleSubmit, errors } = methods;
+  const { handleSubmit } = methods;
+
+  useEffect(() => {
+    const resultMonth = generateArrayOfMonths();
+    const resultDay = generateArrayOfDays();
+    const resultYears = generateArrayOfYears();
+    const resultGender = generateArrayOfGenders();
+    const resultCourses = generateArrayOfCourses();
+    if (resultMonth?.length) {
+      setMonth(resultMonth);
+    }
+    if (resultDay?.length) {
+      setDay(resultDay);
+    }
+    if (resultYears?.length) {
+      setYears(resultYears);
+    }
+    if (resultGender?.length) {
+      setGender(resultGender);
+    }
+    if (resultCourses?.length) {
+      setCourses(resultCourses);
+    }
+  }, [])
+
   // display form object
   const onSubmit = data => console.log(data);
 
@@ -35,22 +67,22 @@ export default function App() {
             <h1 className="text-base font-semibold">Birth Day</h1>
             <div className="flex space-x-1">
               <div className="w-3/5">
-                <SelectElement className="w-full" name="month" id="month" />
+                <SelectElement className="w-full" name="month" id="month" data={month} />
                 <label htmlFor="month">Month</label>
               </div>
               <div className="w-2/5">
-                <SelectElement className="w-full" name="day" id="day" />
+                <SelectElement className="w-full" name="day" id="day" data={day} />
                 <label htmlFor="day">Day</label>
               </div>
               <div className="w-2/5">
-                <SelectElement className="w-full" name="year" id="year" />
+                <SelectElement className="w-full" name="year" id="year" data={years} />
                 <label htmlFor="year">Year</label>
               </div>
             </div>
           </div>
           <div className="w-1/2">
             <h1 className="text-base font-semibold">Gender</h1>
-            <SelectElement className="w-full" name="gender" id="gender" />
+            <SelectElement className="w-full" name="gender" id="gender" data={gender} />
           </div>
         </div>
         <div className="mb-4">
@@ -107,7 +139,7 @@ export default function App() {
         </div>
         <div className="mb-4">
           <label className="text-base text-gray-600 font-semibold" htmlFor="courses">Courses</label>
-          <SelectElement className="w-1/2" name="courses" id="courses" />
+          <SelectElement className="w-1/2" name="courses" id="courses" data={courses} />
         </div>
         <div className="">
           <label className="text-base text-gray-600 font-semibold" htmlFor="comments">Additional Comments</label>
