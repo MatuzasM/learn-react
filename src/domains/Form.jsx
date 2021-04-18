@@ -4,7 +4,7 @@ import ButtonElement from '../components/ButtonElement';
 import InputElement from '../components/InputElement';
 import SelectElement from '../components/SelectElement';
 import TextareaElement from '../components/TextareaElement';
-import { generateArrayOfMonths, generateArrayOfDays, generateArrayOfYears, generateArrayOfGenders, generateArrayOfCourses, } from '../api/generateData';
+import { generateArrayOfMonths, generateArrayOfDays, generateArrayOfYears, generateArrayOfGenders, generateArrayOfCourses, generateArrayOfCity, generateArrayOfState } from '../api/generateData';
 
 export default function App() {
   const [month, setMonth] = useState([]);
@@ -12,6 +12,8 @@ export default function App() {
   const [years, setYears] = useState([]);
   const [gender, setGender] = useState([]);
   const [courses, setCourses] = useState([]);
+  const [city, setCity] = useState([]);
+  const [state, setState] = useState([]);
   const methods = useForm();
   const { handleSubmit } = methods;
 
@@ -21,6 +23,8 @@ export default function App() {
     const resultYears = generateArrayOfYears();
     const resultGender = generateArrayOfGenders();
     const resultCourses = generateArrayOfCourses();
+    const resultCity = generateArrayOfCity();
+    const resultState = generateArrayOfState();
     if (resultMonth?.length) {
       setMonth(resultMonth);
     }
@@ -35,6 +39,12 @@ export default function App() {
     }
     if (resultCourses?.length) {
       setCourses(resultCourses);
+    }
+    if (resultCourses?.length) {
+      setCity(resultCity);
+    }
+    if (resultCourses?.length) {
+      setState(resultState);
     }
   }, [])
 
@@ -92,11 +102,11 @@ export default function App() {
         </div>
         <div className="flex space-x-3 mb-4">
           <div className="w-1/2">
-            <SelectElement className="w-full" name="city" id="city" />
+            <SelectElement className="w-full" name="city" id="city" data={city}/>
             <label htmlFor="city">City</label>
           </div>
           <div className="w-1/2">
-            <SelectElement className="w-full" name="state" id="state" />
+            <SelectElement className="w-full" name="state" id="state" data={state}/>
             <label htmlFor="state">State / Province</label>
           </div>
         </div>

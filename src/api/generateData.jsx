@@ -29,3 +29,13 @@ export function generateArrayOfCourses() {
   let courses = ['java', 'javascript', 'ruby', 'php']
   return Array.from({ length: courses.length }, (v, i) => ({ value: courses[i], label: courses[i] }));
 }
+
+export function generateArrayOfCity() {
+  let city = ['City1','City2','City3','City4','City5']
+  return Array.from({ length: city.length }, (v, i) => ({ value: city[i], label: city[i] }));
+}
+
+export function generateArrayOfState() {
+  let state = ['State1','State2','State3','State4','State5']
+  return Array.from({ length: state.length }, (v, i) => ({ value: state[i], label: state[i] }));
+}
