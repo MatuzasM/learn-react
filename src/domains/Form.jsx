@@ -10,6 +10,9 @@ export default function App() {
   const [month, setMonth] = useState([]);
   const [day, setDay] = useState([]);
   const [years, setYears] = useState([]);
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
+  const [selectedDay, setSelectedDay] = useState(new Date().getDate());
   const [gender, setGender] = useState([]);
   const [courses, setCourses] = useState([]);
   const [city, setCity] = useState([]);
@@ -46,9 +49,35 @@ export default function App() {
     if (resultCourses?.length) {
       setState(resultState);
     }
+    
+    // Remove state data
+    return () => {
+      setMonth([]);
+      setDay([]);
+      setYears([]);
+      setSelectedYear([]);
+      setSelectedMonth([]);
+      setSelectedDay([]);
+      setGender([]);
+      setCourses([]);
+      setCity([]);
+      setState([]);
+    }
   }, [])
-
   const onSubmit = data => console.log(data);
+
+  const onChangeSelectMonth = (monthNumber) => {
+    setSelectedMonth(monthNumber);
+    const newDayList = generateArrayOfDays(selectedYear,monthNumber);
+    setDay(newDayList);
+  }
+
+  const onChangeSelectYear = (yearNumber) => {
+    setSelectedYear(yearNumber);
+    const newDayList = generateArrayOfDays(yearNumber,selectedMonth);
+    setDay(newDayList);
+  }
+  
 
   return (
     <FormProvider {...methods}>
@@ -56,7 +85,7 @@ export default function App() {
         <h1 className="text-base font-semibold">Student Name</h1>
         <div className="flex space-x-1 mb-4">
           <div className="w-1/3">
-            <InputElement className="w-full" name="firtName" />
+            <InputElement className="w-full" name="firstName" />
             <label htmlFor="firstName">First Name</label>
           </div>
           <div className="w-1/3">
@@ -73,15 +102,15 @@ export default function App() {
             <h1 className="text-base font-semibold">Birth Day</h1>
             <div className="flex space-x-1">
               <div className="w-3/5">
-                <SelectElement className="w-full" name="month" id="month" data={month} />
+                <SelectElement className="w-full" name="month" id="month" data={month} onChange={onChangeSelectMonth} defaultValue={selectedMonth}/>
                 <label htmlFor="month">Month</label>
               </div>
               <div className="w-2/5">
-                <SelectElement className="w-full" name="day" id="day" data={day}/>
+                <SelectElement className="w-full" name="day" id="day" data={day} onChange={setSelectedDay} defaultValue={selectedDay}/>
                 <label htmlFor="day">Day</label>
               </div>
               <div className="w-2/5">
-                <SelectElement className="w-full" name="year" id="year" data={years} />
+                <SelectElement className="w-full" name="year" id="year" data={years} onChange={onChangeSelectYear} defaultValue={selectedYear}/>
                 <label htmlFor="year">Year</label>
               </div>
             </div>
