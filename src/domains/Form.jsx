@@ -1,24 +1,26 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { useEffect, useState } from "react";
+
 import ButtonElement from '../components/ButtonElement';
 import InputElement from '../components/InputElement';
 import SelectElement from '../components/SelectElement';
 import TextareaElement from '../components/TextareaElement';
-import { generateArrayOfMonths, generateArrayOfDays, generateArrayOfYears, generateArrayOfGenders, generateArrayOfCourses, generateArrayOfCity, generateArrayOfState } from '../api/generateData';
+import { generateArrayOfMonths, generateArrayOfDays, generateArrayOfYears, generateArrayOfGenders, generateArrayOfCourses, generateArrayOfCities, generateArrayOfStates } from '../api/generateData';
 
 export default function App() {
-  const [month, setMonth] = useState([]);
-  const [day, setDay] = useState([]);
-  const [years, setYears] = useState([]);
+  
+  const [month, setMonth] = useState('');
+  const [day, setDay] = useState('');
+  const [years, setYears] = useState('');
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
   const [selectedDay, setSelectedDay] = useState(new Date().getDate());
-  const [gender, setGender] = useState([]);
-  const [courses, setCourses] = useState([]);
-  const [city, setCity] = useState([]);
-  const [state, setState] = useState([]);
-  const methods = useForm();
-  const { handleSubmit } = methods;
+  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedState, setSelectedState] = useState('');
+  const [gender, setGender] = useState('');
+  const [courses, setCourses] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
 
   useEffect(() => {
     const resultMonth = generateArrayOfMonths();
@@ -26,8 +28,8 @@ export default function App() {
     const resultYears = generateArrayOfYears();
     const resultGender = generateArrayOfGenders();
     const resultCourses = generateArrayOfCourses();
-    const resultCity = generateArrayOfCity();
-    const resultState = generateArrayOfState();
+    const resultCity = generateArrayOfCities();
+    const resultState = generateArrayOfStates();
     if (resultMonth?.length) {
       setMonth(resultMonth);
     }
@@ -64,12 +66,24 @@ export default function App() {
       setState([]);
     }
   }, [])
-  const onSubmit = data => console.log(data);
-
+  
   const onChangeSelectMonth = (monthNumber) => {
     setSelectedMonth(monthNumber);
     const newDayList = generateArrayOfDays(selectedYear,monthNumber);
     setDay(newDayList);
+  }
+  const onChangeSelectCourses = (newCourses) => {
+    setCourses(newCourses);
+  } 
+
+  const onChangeSelectCity = (newCity) => {
+    setSelectedCity(newCity);
+  }
+
+  const onChangeSelectState = (newState) => {
+    setSelectedState(newState);
+    const newCityList = generateArrayOfCities(selectedState);
+    setCity(newCityList);
   }
 
   const onChangeSelectYear = (yearNumber) => {
@@ -77,13 +91,20 @@ export default function App() {
     const newDayList = generateArrayOfDays(yearNumber,selectedMonth);
     setDay(newDayList);
   }
-  
+
+    const onChangeSelectGender = (newGender) => {
+    setGender(newGender);
+  }
+
+  const methods = useForm();
+  const {register, handleSubmit, errors } = methods;
+  const onSubmit = (data) => console.log(data);
 
   return (
-    <FormProvider {...methods}>
+    <FormProvider>
       <form className="text-sm" onSubmit={handleSubmit(onSubmit)} >
         <h1 className="text-base font-semibold">Student Name</h1>
-        <div className="flex space-x-1 mb-4">
+        <div className="flex space-x-1 mb-4"> 
           <div className="w-1/3">
             <InputElement className="w-full" name="firstName" />
             <label htmlFor="firstName">First Name</label>
@@ -117,7 +138,7 @@ export default function App() {
           </div>
           <div className="w-1/2">
             <h1 className="text-base font-semibold">Gender</h1>
-            <SelectElement className="w-full" name="gender" id="gender" data={gender} />
+            <SelectElement className="w-full" name="gender" id="gender" data={gender} onChange={onChangeSelectGender} />
           </div>
         </div>
         <div className="mb-4">
@@ -131,11 +152,11 @@ export default function App() {
         </div>
         <div className="flex space-x-3 mb-4">
           <div className="w-1/2">
-            <SelectElement className="w-full" name="city" id="city" data={city}/>
+            <SelectElement className="w-full" name="city" id="city" data={city} onChange={onChangeSelectCity} />
             <label htmlFor="city">City</label>
           </div>
           <div className="w-1/2">
-            <SelectElement className="w-full" name="state" id="state" data={state}/>
+            <SelectElement className="w-full" name="state" id="state" data={state} onChange={onChangeSelectState} />
             <label htmlFor="state">State / Province</label>
           </div>
         </div>
@@ -174,7 +195,7 @@ export default function App() {
         </div>
         <div className="mb-4">
           <label className="text-base text-gray-600 font-semibold" htmlFor="courses">Courses</label>
-          <SelectElement className="w-1/2" name="courses" id="courses" data={courses} />
+          <SelectElement className="w-1/2" name="courses" id="courses" data={courses} onChange={onChangeSelectCourses}/>
         </div>
         <div className="">
           <label className="text-base text-gray-600 font-semibold" htmlFor="comments">Additional Comments</label>

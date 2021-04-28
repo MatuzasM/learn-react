@@ -30,12 +30,18 @@ export function generateArrayOfCourses() {
   return Array.from({ length: courses.length }, (v, i) => ({ value: courses[i], label: courses[i] }));
 }
 
-export function generateArrayOfCity() {
-  let city = ['City1','City2','City3','City4','City5']
-  return Array.from({ length: city.length }, (v, i) => ({ value: city[i], label: city[i] }));
+// Data object for state/city
+const cityByState = {
+  texas: ['ElPaso', 'Dallas'],
+  florida: ['Miami', 'Orlando'],
+  indiana: ['Indianapolis', 'Madison'],
+  nevada: ['LasVegas', 'VirginiaCity']
 }
 
-export function generateArrayOfState() {
-  let state = ['State1','State2','State3','State4','State5']
-  return Array.from({ length: state.length }, (v, i) => ({ value: state[i], label: state[i] }));
+export function generateArrayOfCities(city = Object.values(cityByState).flat()) {
+  return Array.from({ length: city.length }, (v, i) => ({ value: city[i].replace(/\s+/g, '-').toLowerCase(), label: city[i] }));
+}
+
+export function generateArrayOfStates(state = Object.keys(cityByState)) {
+  return Array.from({ length: state.length }, (v, i) => ({ value: state[i], label: state[i] })); // change value to word - city[i].replace(/\s+/g, '-').toLowerCase()
 }
