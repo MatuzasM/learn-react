@@ -38,8 +38,8 @@ const cityByState = {
   nevada: ['LasVegas', 'VirginiaCity']
 }
 
-export function generateArrayOfCities(city = Object.values(cityByState).flat()) {
-  return Array.from({ length: city.length }, (v, i) => ({ value: city[i].replace(/\s+/g, '-').toLowerCase(), label: city[i] }));
+export function generateArrayOfCities(cities = cityByState.texas) {
+  return Array.from({ length: cities.length }, (v, i) => ({ value: cities[i].replace(/\s+/g, '-').toLowerCase(), label: cities[i] }));
 }
 
 export function generateArrayOfStates(state = Object.keys(cityByState)) {

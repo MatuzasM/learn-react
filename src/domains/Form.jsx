@@ -1,6 +1,7 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { useEffect, useState } from "react";
-
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import ButtonElement from '../components/ButtonElement';
 import InputElement from '../components/InputElement';
 import SelectElement from '../components/SelectElement';
@@ -8,7 +9,14 @@ import TextareaElement from '../components/TextareaElement';
 import { generateArrayOfMonths, generateArrayOfDays, generateArrayOfYears, generateArrayOfGenders, generateArrayOfCourses, generateArrayOfCities, generateArrayOfStates } from '../api/generateData';
 
 export default function App() {
+  const cityByState = {
+    texas: ['ElPaso', 'Dallas'],
+    florida: ['Miami', 'Orlando'],
+    indiana: ['Indianapolis', 'Madison'],
+    nevada: ['LasVegas', 'VirginiaCity']
+  }
   
+
   const [month, setMonth] = useState('');
   const [day, setDay] = useState('');
   const [years, setYears] = useState('');
@@ -51,20 +59,6 @@ export default function App() {
     if (resultCourses?.length) {
       setState(resultState);
     }
-    
-    // Remove state data
-    return () => {
-      setMonth([]);
-      setDay([]);
-      setYears([]);
-      setSelectedYear([]);
-      setSelectedMonth([]);
-      setSelectedDay([]);
-      setGender([]);
-      setCourses([]);
-      setCity([]);
-      setState([]);
-    }
   }, [])
   
   const onChangeSelectMonth = (monthNumber) => {
@@ -81,8 +75,7 @@ export default function App() {
   }
 
   const onChangeSelectState = (newState) => {
-    setSelectedState(newState);
-    const newCityList = generateArrayOfCities(selectedState);
+    const newCityList = generateArrayOfCities(cityByState[newState]);
     setCity(newCityList);
   }
 
@@ -97,7 +90,7 @@ export default function App() {
   }
 
   const methods = useForm();
-  const {register, handleSubmit, errors } = methods;
+  const {register,handleSubmit, errors } = methods;
   const onSubmit = (data) => console.log(data);
 
   return (
@@ -152,11 +145,11 @@ export default function App() {
         </div>
         <div className="flex space-x-3 mb-4">
           <div className="w-1/2">
-            <SelectElement className="w-full" name="city" id="city" data={city} onChange={onChangeSelectCity} />
+            <SelectElement className="w-full" name="city" id="city" data={city} onChange={onChangeSelectCity} defaultValue={selectedYear}/>
             <label htmlFor="city">City</label>
           </div>
           <div className="w-1/2">
-            <SelectElement className="w-full" name="state" id="state" data={state} onChange={onChangeSelectState} />
+            <SelectElement className="w-full" name="state" id="state" data={state} onChange={onChangeSelectState} defaultValue={selectedYear}/>
             <label htmlFor="state">State / Province</label>
           </div>
         </div>
